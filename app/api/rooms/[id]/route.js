@@ -11,7 +11,7 @@ router.get(allRooms)
 router.get(room)
 router.post(newRoom)
 
-export const GET = async (req, res) => {
+export const GET = async (req, res) => {            
   return router.run(req, res)
 }
 export const POST = async (req, res) => {
