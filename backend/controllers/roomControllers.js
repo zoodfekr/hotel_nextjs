@@ -8,11 +8,11 @@ export const allRooms = async (req, res) => {
 }
 
 // دریافت یک اتاق
-
-export const room = async (req, res) => {
+export const room = async (req, { params }) => {
   try {
-    const roomid = req.query.id
-    const room = await Room.findById(roomid)
+    const { id } = await params
+    console.log('room id>> ', id)
+    const room = await Room.findById(id)
     if (!room) {
       return NextResponse.json(
         { success: false, message: 'اتاقی با این شناسه پیدا نشد' },
