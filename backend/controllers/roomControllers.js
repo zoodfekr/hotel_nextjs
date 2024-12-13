@@ -84,3 +84,30 @@ export const updateRoom = async (req, { params }) => {
     )
   }
 }
+
+// حذف یک اتاق
+export const deleteRoom = async (req, { params }) => {
+  try {
+    const { id } = params
+    console.log('room id>> ', id)
+
+    const deletedRoom = await Room.findByIdAndDelete(id)
+    if (!deletedRoom) {
+      return NextResponse.json(
+        { success: false, message: 'اتاقی با این شناسه پیدا نشد' },
+        { status: 404 }
+      )
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: 'حذف شد'
+    })
+  } catch (error) {
+    console.error('Error deleting room:', error)
+    return NextResponse.json(
+      { success: false, message: 'خطایی رخ داده است' },
+      { status: 500 }
+    )
+  }
+}
