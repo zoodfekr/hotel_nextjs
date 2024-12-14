@@ -56,7 +56,6 @@ export const newRoom = async req => {
 }
 
 // به روز رسانی اتاق
-
 export const updateRoom = async (req, { params }) => {
   try {
     const { id } = params
